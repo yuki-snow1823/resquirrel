@@ -1,11 +1,13 @@
 name: create release notes
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
 
 jobs:
-  run_script:
-    runs-on: ubuntu-latest
+  generate:
+    if: ${{ github.event.pull_request.merged }}
 
     steps:
     - name: Checkout code
