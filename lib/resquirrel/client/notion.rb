@@ -20,7 +20,8 @@ class NotionClient
     }.to_json
 
     Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-      http.request(request)
+      response = http.request(request)
+      puts response.body
     end
   end
 end
