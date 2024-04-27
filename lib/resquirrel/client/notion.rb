@@ -28,8 +28,8 @@ class NotionClient
             }
           ]
         },
-        "URL": {
-          url: url
+        url: {
+          url: "test"
         }
       }
     }.to_json
