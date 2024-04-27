@@ -1,5 +1,7 @@
-require 'net/http'
-require 'json'
+# frozen_string_literal: true
+
+require "net/http"
+require "json"
 
 class NotionClient
   def initialize(api_key, database_id)
@@ -11,7 +13,7 @@ class NotionClient
     uri = URI("https://api.notion.com/v1/pages")
     request = Net::HTTP::Post.new(uri)
     request["Authorization"] = "Bearer #{@api_key}"
-    request.content_type = 'application/json'
+    request.content_type = "application/json"
     request.body = {
       parent: { type: "database_id", database_id: @database_id },
       properties: {
