@@ -1,34 +1,164 @@
 # Resquirrel
 
-TODO: Delete this and the text below, and describe your gem
+RubyGems that automatically create release notes for Notion DB using Open AI API.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/resquirrel`. To experiment with that code, run `bin/console` for an interactive prompt.
+<img width="480" src="https://github.com/yuki-snow1823/resquirrel/assets/59280290/48ab260d-242b-421d-b7ce-88ba611f0d19">
+
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+```
+gem 'fabrique'
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+And then execute:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+```
+$ bundle install
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Or install it yourself as:
 
-## Usage
+```
+$ gem install resquirrel
+```
 
-TODO: Write usage instructions here
+## Usage（日本語）
 
-## Development
+### NotionのAPIキーの用意
+1. まずは、NotionのAPIを使えるようにするためのトークンを取得します。
+2. [Notionの開発者ページ](https://www.notion.so/my-integrations)にアクセスします。
+3.  `New integration`をクリックして、作成したトークンをリリースノートを作成したいリポジトリのrepository secretsに登録します。NOTION_API_KEYという名前で登録してください。
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Notionのデータベースの用意
+1. Notionにリリースノートを作成するためのFull Pageのデータベースを作成します。
+2. データベースには、以下のプロパティを用意します。
+    - `changes` : リリースノートのタイトル（DBを作成するとデフォルトで用意されています。）
+    - `URL` : リリースノートのリンク
+3. 作成したDBのURLをコピーして、https://www.notion.so/[この部分]?v=hogehoge の文字列を、リリースノートを作成したいリポジトリのrepository secretsに登録します。NOTION_DATABASE_IDという名前で登録してください。
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Open AI APIの用意
+1. Open AI APIを使えるようにするためのAPIキーを取得します。
+2. [Open AIの開発者ページ](https://platform.openai.com/account/api-keys)にアクセスします。
+3. `Create API Key`をクリックして、作成したAPIキーをリリースノートを作成したいリポジトリのrepository secretsに登録します。OPENAI_API_KEYという名前で登録してください。
+   - 制限に関しては、ModelsのRead、Model CapabilitiesのWriteが必要です。
+
+### 実行方法
+sample: 
+`.github/workflows/create_release_notes.yml` のようなCIで実行するファイルを作成します。
+
+```yml
+name: create release notes
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create_release_notes:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Run script
+      run: ruby lib/resquirrel.rb
+      env:
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+```
+
+```rb
+resquirrel = Resquirrel.new
+resquirrel.generate_release_note
+```
+それぞれのenvは必須です。
+
+## Usage(English)
+
+### Preparing Notion's API key
+1. first, you will need to obtain a token to be able to use Notion's API. 2.
+2. go to [Notion's developer page](https://www.notion.so/my-integrations).
+3. click `New integration` and register the token you have created in the repository secrets of the repository for which you want to create release notes. The name shold be set NOTION_API_KEY.
+
+### Preparing Notion's database
+1. Create a Full Page database in Notion to create release notes.
+2. Prepare the following properties in the database.
+    - `changes` : Title of the release note (this is provided by default when you create a DB.)
+    - `URL` : Link to the release note
+3. Copy the URL of the created DB and register the string https://www.notion.so/[this part]?v=hogehoge in the repository secrets of the repository where you want to create the release notes. The name should be set to NOTION_DATABASE_ID.
+
+### Preparing Open AI API
+1. Obtain an API key to use the Open AI API.
+2. Go to the [Open AI developer page](https://platform.openai.com/account/api-keys).
+3. Click `Create API Key` and register the created API key in the repository secrets of the repository where you want to create the release notes. The name should be set to OPENAI_API_KEY.
+   - The required permissions are Models Read and Model Capabilities Write.
+
+### How to run
+sample:
+Create a file to run the script in CI, such as `.github/workflows/create_release_notes.yml`.
+
+
+```yml
+name: create release notes
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create_release_notes:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Run script
+      run: ruby lib/resquirrel.rb
+      env:
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+```
+
+```rb
+resquirrel = Resquirrel.new
+resquirrel.generate_release_note
+```
+Each env is required.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/resquirrel. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/resquirrel/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/yuki-snow1823/resquirrel This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/resquirrel/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
