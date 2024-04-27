@@ -1,0 +1,29 @@
+name: create release notes
+
+on:
+  push:
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Run script
+      run: ruby main.rb
+      env:
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+
