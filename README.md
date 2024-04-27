@@ -9,19 +9,19 @@ RubyGems that automatically create release notes for Notion DB using Open AI API
 
 Add this line to your application's Gemfile:
 
-```
+```Gemfile
 gem 'fabrique'
 ```
 
 And then execute:
 
-```
+```console
 $ bundle install
 ```
 
 Or install it yourself as:
 
-```
+```console
 $ gem install resquirrel
 ```
 
@@ -30,19 +30,19 @@ $ gem install resquirrel
 ### NotionのAPIキーの用意
 1. まずは、NotionのAPIを使えるようにするためのトークンを取得します。
 2. [Notionの開発者ページ](https://www.notion.so/my-integrations)にアクセスします。
-3.  `New integration`をクリックして、作成したトークンをリリースノートを作成したいリポジトリのrepository secretsに登録します。NOTION_API_KEYという名前で登録してください。
+3.  `New integration`をクリックして、作成したトークンをリリースノートを作成したいリポジトリのrepository secretsに登録します。`NOTION_API_KEY`という名前で登録してください。
 
 ### Notionのデータベースの用意
 1. Notionにリリースノートを作成するためのFull Pageのデータベースを作成します。
 2. データベースには、以下のプロパティを用意します。
     - `changes` : リリースノートのタイトル（DBを作成するとデフォルトで用意されています。）
     - `URL` : リリースノートのリンク
-3. 作成したDBのURLをコピーして、https://www.notion.so/[この部分]?v=hogehoge の文字列を、リリースノートを作成したいリポジトリのrepository secretsに登録します。NOTION_DATABASE_IDという名前で登録してください。
+3. 作成したDBのURLをコピーして、https://www.notion.so/[この部分]?v=hogehoge の文字列を、リリースノートを作成したいリポジトリのrepository secretsに登録します。`NOTION_DATABASE_ID`という名前で登録してください。
 
 ### Open AI APIの用意
 1. Open AI APIを使えるようにするためのAPIキーを取得します。
 2. [Open AIの開発者ページ](https://platform.openai.com/account/api-keys)にアクセスします。
-3. `Create API Key`をクリックして、作成したAPIキーをリリースノートを作成したいリポジトリのrepository secretsに登録します。OPENAI_API_KEYという名前で登録してください。
+3. `Create API Key`をクリックして、作成したAPIキーをリリースノートを作成したいリポジトリのrepository secretsに登録します。`OPENAI_API_KEY`という名前で登録してください。
    - 制限に関しては、ModelsのRead、Model CapabilitiesのWriteが必要です。
 
 ### 実行方法
@@ -95,19 +95,19 @@ resquirrel.generate_release_note
 ### Preparing Notion's API key
 1. first, you will need to obtain a token to be able to use Notion's API. 2.
 2. go to [Notion's developer page](https://www.notion.so/my-integrations).
-3. click `New integration` and register the token you have created in the repository secrets of the repository for which you want to create release notes. The name shold be set NOTION_API_KEY.
+3. click `New integration` and register the token you have created in the repository secrets of the repository for which you want to create release notes. The name shold be set `NOTION_API_KEY`.
 
 ### Preparing Notion's database
 1. Create a Full Page database in Notion to create release notes.
 2. Prepare the following properties in the database.
     - `changes` : Title of the release note (this is provided by default when you create a DB.)
     - `URL` : Link to the release note
-3. Copy the URL of the created DB and register the string https://www.notion.so/[this part]?v=hogehoge in the repository secrets of the repository where you want to create the release notes. The name should be set to NOTION_DATABASE_ID.
+3. Copy the URL of the created DB and register the string https://www.notion.so/[this part]?v=hogehoge in the repository secrets of the repository where you want to create the release notes. The name should be set to `NOTION_DATABASE_ID`.
 
 ### Preparing Open AI API
 1. Obtain an API key to use the Open AI API.
 2. Go to the [Open AI developer page](https://platform.openai.com/account/api-keys).
-3. Click `Create API Key` and register the created API key in the repository secrets of the repository where you want to create the release notes. The name should be set to OPENAI_API_KEY.
+3. Click `Create API Key` and register the created API key in the repository secrets of the repository where you want to create the release notes. The name should be set to `OPENAI_API_KEY`.
    - The required permissions are Models Read and Model Capabilities Write.
 
 ### How to run
