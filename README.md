@@ -37,7 +37,7 @@ $ gem install resquirrel
 2. データベースには、以下のプロパティを用意します。
     - `changes` : リリースノートのタイトル（DBを作成するとデフォルトで用意されています。）
     - `URL` : リリースノートのリンク
-3. 作成したDBのURLをコピーして、https://www.notion.so/[この部分]?v=hogehoge の文字列を、リリースノートを作成したいリポジトリのrepository secretsに登録します。`NOTION_DATABASE_ID`という名前で登録してください。
+3. 作成したDBのURLをコピーして、`https://www.notion.so/[この部分]?v=hogehoge` の文字列を、リリースノートを作成したいリポジトリのrepository secretsに登録します。`NOTION_DATABASE_ID`という名前で登録してください。
 
 ### Open AI APIの用意
 1. Open AI APIを使えるようにするためのAPIキーを取得します。
