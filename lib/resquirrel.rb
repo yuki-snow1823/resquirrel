@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "resquirrel/version"
-require_relative "client/open_ai"
+require_relative "client/openai"
 require_relative "client/notion"
 require "json"
 require "logger"
