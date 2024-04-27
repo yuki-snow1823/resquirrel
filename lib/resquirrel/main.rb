@@ -21,9 +21,6 @@ response = openai_client.summary_pr(title, body)
 summary = response["choices"].first["message"]["content"]
 url = pr_data["url"]
 
-p url
-p "---test----"
-
 logger.info "Updating Notion database..."
 
 notion_client = NotionClient.new(ENV["NOTION_API_KEY"], ENV["NOTION_DATABASE_ID"])
