@@ -10,7 +10,7 @@ RubyGems that automatically create release notes for Notion DB using Open AI API
 Add this line to your application's Gemfile:
 
 ```Gemfile
-gem 'fabrique'
+gem 'resquirrel'
 ```
 
 And then execute:
