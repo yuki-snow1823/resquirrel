@@ -9,7 +9,7 @@ class NotionClient
     @database_id = database_id
   end
 
-  def update_database(summary, url)
+  def create_release_note(summary, url)
     uri = URI("https://api.notion.com/v1/pages")
     request = Net::HTTP::Post.new(uri)
     request["Authorization"] = "Bearer #{@api_key}"
@@ -36,7 +36,6 @@ class NotionClient
 
     Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       response = http.request(request)
-      puts response.body
     end
   end
 end
