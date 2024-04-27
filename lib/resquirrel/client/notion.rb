@@ -13,6 +13,7 @@ class NotionClient
     uri = URI("https://api.notion.com/v1/pages")
     request = Net::HTTP::Post.new(uri)
     request["Authorization"] = "Bearer #{@api_key}"
+    request["Notion-Version"] = "2022-06-28"
     request.content_type = "application/json"
     request.body = {
       parent: { type: "database_id", database_id: @database_id },
