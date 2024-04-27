@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative 'lib/resquirrel/client/notion'
+require_relative 'client/notion'
 
 event_data = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
 
