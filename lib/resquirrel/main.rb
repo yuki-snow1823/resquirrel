@@ -10,6 +10,10 @@ logger = Logger.new($stdout)
 logger.info "Getting PR information..."
 pr_data = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
 
+logger.info pr_data
+p "------------------------"
+
+
 title = pr_data["title"]
 body = pr_data["body"]
 
