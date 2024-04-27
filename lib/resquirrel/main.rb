@@ -2,6 +2,7 @@
 
 require "json"
 require_relative "client/notion"
+require_relative "client/openai"
 
 event_data = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
 
