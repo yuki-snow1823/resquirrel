@@ -27,7 +27,7 @@ class NotionClient
               }
             }
           ]
-        }
+        },
         "Project URL": {
           url: {url}
         }
