@@ -28,8 +28,8 @@ class NotionClient
             }
           ]
         },
-        "Project URL": {
-          url: {url}
+        url: {
+          url: url
         }
       }
     }.to_json
