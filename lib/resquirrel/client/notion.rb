@@ -29,7 +29,7 @@ class NotionClient
           ]
         },
         URL: {
-          url: url
+          url: "test"
         }
       }
     }.to_json
