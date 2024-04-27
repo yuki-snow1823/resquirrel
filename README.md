@@ -85,8 +85,9 @@ jobs:
 ```
 
 ```rb
-resquirrel = Resquirrel.new
-resquirrel.generate_release_note
+require 'resquirrel'
+
+Resquirrel.generate_release_note
 ```
 それぞれのenvは必須です。
 
@@ -151,8 +152,9 @@ jobs:
 ```
 
 ```rb
-resquirrel = Resquirrel.new
-resquirrel.generate_release_note
+require 'resquirrel'
+
+Resquirrel.generate_release_note
 ```
 Each env is required.
 
