@@ -28,7 +28,7 @@ class NotionClient
             }
           ]
         },
-        URL: {
+        url: {
           url: "test"
         }
       }

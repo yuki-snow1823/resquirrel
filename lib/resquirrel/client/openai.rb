@@ -20,12 +20,11 @@ class OpenAiClient
       model: @model,
       messages: [{ "role": "user",
                    "content": 
-                   "これからGitHub PRのタイトルと内容を送ります。
-                   この内容を、プログラミングやウェブ技術にそれほど詳しくない人のために要約してください。
-                   内容は簡潔にお願いします。日本語で必ず返答してください。
-                   要約の文章はタイトル：本文：のようにせず、文章だけでお願いします。
-                   タイトル： #{title}
-                   本文： #{body}"}],
+                   "I will now send you the title and content of the GitHub PR.
+                   You are to summarize this content for those who are not that familiar with programming and web technologies.
+                   Please keep the content concise.
+                   title: #{title}
+                   body: #{body}" }],
       max_tokens: max_tokens
     }.to_json
 
