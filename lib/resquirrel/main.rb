@@ -22,7 +22,7 @@ summary = response["choices"].first["message"]["content"]
 url = pr_data["url"]
 
 p url
-p "test----"
+p "---test----"
 
 logger.info "Updating Notion database..."
 
