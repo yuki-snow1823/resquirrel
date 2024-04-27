@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["yuki-snow1823"]
   spec.email = ["y.horikoshi.pg@gmail.com"]
 
-  spec.summary = "Resquirrel automatically saves GitHub PR titles and contents as release notes in a Notion DB."
+  spec.summary = "RubyGems that automatically create release notes for Notion DB using Open AI API."
   spec.description = ""
   spec.homepage = "https://github.com/yuki-snow1823/resquirrel"
   spec.license = "MIT"
