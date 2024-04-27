@@ -8,11 +8,7 @@ require_relative "client/openai"
 logger = Logger.new($stdout)
 
 logger.info "Getting PR information..."
-pr_data = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
-
-logger.info pr_data
-p "------------------------"
-
+pr_data = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))["pull_request"]
 
 title = pr_data["title"]
 body = pr_data["body"]
@@ -25,8 +21,6 @@ response = openai_client.summary_pr(title, body)
 summary = response["choices"].first["message"]["content"]
 url = pr_data["url"]
 
-p url
-p "---test----"
 
 logger.info "Updating Notion database..."
 
