@@ -25,5 +25,6 @@ jobs:
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
         NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
