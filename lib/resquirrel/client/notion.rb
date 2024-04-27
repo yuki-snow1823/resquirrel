@@ -18,8 +18,17 @@ class NotionClient
     request.body = {
       parent: { type: "database_id", database_id: @database_id },
       properties: {
-        title: { title: summary }
-      }
+        title: {
+          title: [
+            {
+              type: "text",
+              text: {
+                content: summary
+              }
+            }
+          ]
+        }
+      }    
     }.to_json
 
     p @api_key
