@@ -19,7 +19,7 @@ class OpenAiClient
     request.body = {
       model: @model,
       messages: [{ "role": "user",
-                   "content": 
+                   "content":
                    "これからGitHub PRのタイトルと内容を送ります。
                    この内容を、プログラミングやウェブ技術にそれほど詳しくない人のために要約してください。
                    日本語で必ず返答してください。
@@ -27,7 +27,7 @@ class OpenAiClient
                    タイトルと本文を踏まえて、どのような変更があったのか文章にわかりやすくまとめてください。
                    以下がPRの内容です。
                    タイトル： #{title}
-                   本文： #{body}"}],
+                   本文： #{body}" }],
       max_tokens: max_tokens
     }.to_json
 
