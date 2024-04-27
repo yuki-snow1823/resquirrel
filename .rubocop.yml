@@ -14,3 +14,12 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 30
+
+Style/Documentation:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
