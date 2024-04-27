@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative "resquirrel/version"
-require_relative 'client/open_ai_client'
-require_relative 'client/notion_client'
-require 'json'
-require 'logger'
+require_relative "client/open_ai_client"
+require_relative "client/notion_client"
+require "json"
+require "logger"
 
 module Resquirrel
   def self.generate_release_note
