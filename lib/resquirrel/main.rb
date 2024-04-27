@@ -10,7 +10,7 @@ p event_data
 
 notion_client = NotionClient.new(ENV["NOTION_API_KEY"], ENV["NOTION_DATABASE_ID"])
 
-commit_message = event_data["commits"].first["message"]
+commit_message = event_data["body"]
 
 openai_client = OpenAiClient.new(ENV["OPENAI_API_KEY"])
 response = openai_client.chat_completion(commit_message)
