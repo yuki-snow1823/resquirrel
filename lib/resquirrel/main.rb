@@ -14,8 +14,9 @@ commit_message = event_data["commits"].first["message"]
 
 openai_client = OpenAiClient.new(ENV["OPENAI_API_KEY"])
 response = openai_client.chat_completion(commit_message)
+message = response["choices"].first["message"]["content"]
 
-p response
+p message
 p "Updating Notion database..."
 
-notion_client.update_database(response)
+notion_client.update_database(message)
