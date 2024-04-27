@@ -5,6 +5,7 @@ require "json"
 require_relative "client/notion"
 require_relative "client/openai"
 
+# test
 logger = Logger.new($stdout)
 
 logger.info "Getting PR information..."
