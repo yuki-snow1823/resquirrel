@@ -6,8 +6,8 @@ on:
       - closed
 
 jobs:
-  generate:
-    if: ${{ github.event.pull_request.merged }}
+  run_script:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
