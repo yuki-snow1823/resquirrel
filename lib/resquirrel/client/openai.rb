@@ -18,7 +18,7 @@ class OpenAiClient
     request.content_type = "application/json"
     request.body = {
       model: @model,
-      messages: [{ "role": "user", "content": "#{messages}Please reply with from OpenAI at the last" }],
+      messages: [{ "role": "user", "content": "Please reply with from OpenAI at the last, and message is #{messages}" }],
       max_tokens: max_tokens
     }.to_json
 
