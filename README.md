@@ -102,7 +102,7 @@ resquirrel.generate_release_note
 2. Prepare the following properties in the database.
     - `changes` : Title of the release note (this is provided by default when you create a DB.)
     - `URL` : Link to the release note
-3. Copy the URL of the created DB and register the string https://www.notion.so/[this part]?v=hogehoge in the repository secrets of the repository where you want to create the release notes. The name should be set to `NOTION_DATABASE_ID`.
+3. Copy the URL of the created DB and register the string `https://www.notion.so/[this part]?v=hogehoge` in the repository secrets of the repository where you want to create the release notes. The name should be set to `NOTION_DATABASE_ID`.
 
 ### Preparing Open AI API
 1. Obtain an API key to use the Open AI API.
