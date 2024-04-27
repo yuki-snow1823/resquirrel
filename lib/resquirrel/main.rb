@@ -9,4 +9,4 @@ p event_data
 
 NotionClient.new(ENV["NOTION_API_KEY"], ENV["NOTION_DATABASE_ID"]).update_database(event_data["commits"].map do |commit|
   commit["message"]
-end)
+end[0])

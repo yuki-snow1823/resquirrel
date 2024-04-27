@@ -28,7 +28,7 @@ class NotionClient
             }
           ]
         }
-      }    
+      }
     }.to_json
 
     p @api_key
