@@ -23,7 +23,5 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[lib/ spec/ .git .github Gemfile])
     end
   end
-  spec.bindir = "exe"
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 end
