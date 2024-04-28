@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["yuki-snow1823"]
   spec.email = ["y.horikoshi.pg@gmail.com"]
 
-  spec.summary = "RubyGems that automatically create release notes for Notion DB using Open AI API."
-  spec.description = ""
+  spec.summary = "The library to support the creation of release notes"
+  spec.description = "RubyGems that automatically create release notes for Notion DB using Open AI API when PR merge."
   spec.homepage = "https://github.com/yuki-snow1823/resquirrel"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
