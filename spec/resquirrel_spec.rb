@@ -21,7 +21,6 @@ RSpec.describe Resquirrel do
     it "initializes the clients and gets the PR information" do
       Resquirrel.generate_release_note
 
-
       expect(OpenAiClient).to have_received(:new).with(ENV["OPENAI_API_KEY"])
       expect(NotionClient).to have_received(:new).with(ENV["NOTION_API_KEY"], ENV["NOTION_DATABASE_ID"])
       expect(File).to have_received(:read).with(ENV["GITHUB_EVENT_PATH"])
@@ -31,7 +30,8 @@ RSpec.describe Resquirrel do
     it "uses the OpenAI client to summarize the PR" do
       Resquirrel.generate_release_note
     
-      expect(openai_client).to have_received(:summary_pr).with(pr_data["pull_request"]["title"], pr_data["pull_request"]["body"])
+      expect(openai_client).to have_received(:summary_pr).with(pr_data["pull_request"]["title"], 
+                                                               pr_data["pull_request"]["body"])
     end
     
     it "uses the Notion client to create a release note" do
