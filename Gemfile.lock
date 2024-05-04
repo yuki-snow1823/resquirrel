@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    resquirrel (0.1.1)
+    resquirrel (0.1.2)
 
 GEM
   remote: https://rubygems.org/
