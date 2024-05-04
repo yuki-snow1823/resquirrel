@@ -22,5 +22,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+    - name: Bundle install
+      run: bundle install
     - name: Run the default task
       run: bundle exec rake
