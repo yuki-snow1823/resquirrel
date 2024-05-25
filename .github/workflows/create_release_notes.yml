@@ -18,8 +18,7 @@ jobs:
     - name: Install dependencies
       run: |
         gem install resquirrel
-        which resquirrel
-        gem install resquirrel
+        gem which resquirrel
 
     - name: Run script
       run: bundle exec resquirrel
