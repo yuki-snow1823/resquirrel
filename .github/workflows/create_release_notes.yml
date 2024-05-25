@@ -16,7 +16,10 @@ jobs:
         ruby-version: '3.3'
 
     - name: Install dependencies
-      run: gem install resquirrel
+      run: |
+        gem install resquirrel
+        which resquirrel
+        gem install resquirrel
 
     - name: Run script
       run: bundle exec resquirrel
