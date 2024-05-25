@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version = Resquirrel::VERSION
   spec.authors = ["yuki-snow1823"]
   spec.email = ["y.horikoshi.pg@gmail.com"]
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.summary = "The library to support the creation of release notes"
   spec.description = "RubyGems that automatically create release notes for Notion DB using Open AI API when PR merge."
   spec.homepage = "https://github.com/yuki-snow1823/resquirrel"
