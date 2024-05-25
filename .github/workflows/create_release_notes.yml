@@ -15,9 +15,6 @@ jobs:
       with:
         ruby-version: '3.3'
 
-    - name: Install dependencies
-      run: gem install resquirrel
-
     - name: Run script
       run: exe/resquirrel
       env:
