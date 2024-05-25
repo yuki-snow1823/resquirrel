@@ -1,9 +1,6 @@
 name: create release notes
 
-on:
-  pull_request:
-    types:
-      - closed
+on: push
 
 jobs:
   create_release_notes:
