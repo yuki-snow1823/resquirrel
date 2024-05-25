@@ -21,7 +21,9 @@ jobs:
         gem which resquirrel
 
     - name: Run script
-      run: bundle exec resquirrel
+      run: |
+        gem install resquirrel
+        bundle exec resquirrel
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
