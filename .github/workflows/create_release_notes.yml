@@ -4,7 +4,6 @@ on: push
 
 jobs:
   create_release_notes:
-    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
     steps:
