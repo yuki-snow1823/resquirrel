@@ -16,11 +16,10 @@ jobs:
         ruby-version: '3.3'
 
     - name: Install dependencies
-      run: |
-        bundle install
+      run: gem install resquirrel
 
     - name: Run script
-      run: exe/my_script.rb
+      run: exe/resquirrel
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
