@@ -20,6 +20,9 @@ jobs:
         gem install resquirrel
         gem which resquirrel
 
+    - name: Bundle install
+      run: bundle install
+
     - name: Run script
       run: bundle exec resquirrel
       env:
