@@ -15,4 +15,4 @@ group :test do
   gem "webmock"
 end
 
-# comment
+gem "resquirrel"
